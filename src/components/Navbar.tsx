@@ -22,29 +22,18 @@ const Navbar = () => {
 
             <div className="flex gap-4 items-center font-medium justify-center">
                 {isSignedIn ? (
-                    // <div className="flex gap-4 align-middle items-center">
-                    //     {/* <CircleUser size={36}
-                    //     /> */}
-                    //     <img 
-                    //     className="w-10 aspect-auto rounded-full"
-                    //     src={user.imageUrl} alt={user.imageUrl} />
-                    //     <div className="flex flex-col">
-                    //     <div className="text-[1.5rem]">{user.firstName}</div>
-                    //     <div>{user.primaryEmailAddress.emailAddress}</div>
-                    //     </div>
-                    // </div>
                     <UserButton />
                     
                 ) : (
                     // React Fragment to wrap multiple elements
                     <>
                         <Link href="/sign-in" passHref>
-                            <Button as="a" className="text-white text-[1rem]" variant="text" size="lg">
+                            <Button className="text-white text-[1rem]" variant="text" size="lg">
                                 Login
                             </Button>
                         </Link>
                         <Link href="/sign-up" passHref>
-                            <Button as="a" variant="lightened" className="text-[1rem]" size="lg">
+                            <Button variant="lightened" className="text-[1rem]" size="lg">
                                 SignUp
                             </Button>
                         </Link>
