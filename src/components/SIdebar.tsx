@@ -1,12 +1,13 @@
 import { Plus } from 'lucide-react'
 import React from 'react'
 
-type Props = {}
+type Props = {
+  subreddits : string[]
+  add : ()=>void
+}
 
 const SIdebar = (props: Props) => {
-  const dummyData = [
-    "r/business", "r/startup_ideas", "r/ideasfortheidea", "r/fitness", "r/technology", "r/programming", "r/askreddit", "r/askscience"
-  ]
+
   const colors = [
     ["#0061FF", "#60EFFF"],
     ["#595CFF", "#C6F8FF"],
@@ -18,7 +19,7 @@ const SIdebar = (props: Props) => {
       <div>
         <h5 className='hover:underline cursor-pointer text-xl'>Include subreddit <Plus className='inline h-4 w-4' /></h5>
         <div className='grid gap-4 my-3'>
-          {dummyData.map((data, index) => (
+          {props.subreddits.map((data, index) => (
             <div key={index} className='flex gap-2 items-center'>
               <div className='w-6 h-6 bg-gradient-to-r rounded-full' style={{
                 background: `linear-gradient(to right, 

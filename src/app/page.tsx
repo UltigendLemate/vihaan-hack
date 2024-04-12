@@ -8,7 +8,5 @@ export default function Home() {
       <Navbar/>
       <Hero/>
     </main>
-    {/* // </div> */}
-
   );
 }
