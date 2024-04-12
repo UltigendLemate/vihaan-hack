@@ -28,22 +28,21 @@ const Navbar = () => {
                         <img 
                         className="w-10 aspect-auto rounded-full"
                         src={user.imageUrl} alt={user.imageUrl} />
-                        <div className="flex flex-col">
-                        <div className="text-[1.5rem]">{user.firstName}</div>
+                        {/* <div className="flex flex-col">
                         <div>{user.primaryEmailAddress.emailAddress}</div>
-                        </div>
+                        </div> */}
                     </div>
                     
                 ) : (
                     // React Fragment to wrap multiple elements
                     <>
                         <Link href="/sign-in" passHref>
-                            <Button as="a" className="text-white text-[1rem]" variant="text" size="lg">
+                            <Button asChild className="text-white text-[1rem]" variant="text" size="lg">
                                 Login
                             </Button>
                         </Link>
                         <Link href="/sign-up" passHref>
-                            <Button as="a" variant="lightened" className="text-[1rem]" size="lg">
+                            <Button asChild variant="lightened" className="text-[1rem]" size="lg">
                                 SignUp
                             </Button>
                         </Link>

@@ -4,6 +4,7 @@ import { TrendingUp, Search, Star, Keyboard } from 'lucide-react'
 import TrendingSearch from './TrendingSearch';
 import { Button } from '@/components/ui/button';
 import Howwework from './Howwework';
+import Faqs from './Faqs';
 
 const Hero = () => {
     const trendingSearch = [
@@ -11,12 +12,6 @@ const Hero = () => {
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non.",
         "Lorem ipsum dolor sit amet.",
     ]
-    const howwork = [
-        {title : "Tell Us About Your Idea",icon : 'input', description : "Briefly describe your SaaS concept using our guided prompt. No need for lengthy proposals."},
-        {title : "We Gather Real User Feedback",icon : 'reddit', description : "Our platform scours relevant online communities on Reddit, Twitter, and more, finding conversations related to your concept"},
-        {title : "Actionable Insights for Success",icon : 'sparkles', description : "We translate the gathered data into clear insights, highlighting user needs and potential opportunities for your idea."}
-    ]
-
 
     return (
         <div className="text-center h-fit text-white grid gap-5">
@@ -59,15 +54,7 @@ const Hero = () => {
                 </div>
             </div>
 
-            <div className='my-20'>
-                <h3 className='text-5xl font-medium'>How we work</h3>
-                <div className='bg-[#0f1b27] p-10 border-2 max-w-screen-xl my-10 rounded-md mx-auto border-gray-700 grid grid-cols-3'>
-                    {howwork.map((item, index) => (
-                        <Howwework icon={item.icon} key={index} title={item.title} description={item.description} />
-                    ))}
-                    
-                </div>
-            </div>
+
         </div>
     )
 }
