@@ -1,7 +1,12 @@
 import { Dot } from 'lucide-react'
 import React from 'react'
 
-type Props = {}
+type Props = {
+  subreddit: string
+  pointers: string[]
+  author: string
+  summary: string
+}
 
 const Tldr = (props: Props) => {
   return (

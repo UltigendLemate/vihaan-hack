@@ -18,11 +18,20 @@ const Idea = () => {
     const addSubreddit = () => {
         console.log('Add subreddit');
     }
+
+    const apiResponse = {
+        subreddit: '',
+        author: '',
+        pointers: ['', '', '', '', '', '', '', ''],
+        summary: ''
+    }
+
+
     return (<main className="">
         <Navbar />
         <Separator className="my-4" />
         <div className="flex h-[300vh] justify-between items-start my-10 px-10 relative">
-            <SIdebar subreddits={subreddits} add={addSubreddit} />
+            <SIdebar subreddits={subreddits} />
             <div className="w-[80%] px-10 grid gap-5">
                 <h2 className="text-3xl font-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque ipsum cupiditate incidunt voluptatum cumque.</h2>
                 <p>Ideateit scanned 651 comments to find you 96 relevant comments from 8 relevant discussions.</p>
@@ -52,7 +61,12 @@ const Idea = () => {
                         <h4 className="text-3xl font-medium">TLDR Summary</h4>
 
                     </div>
-                    <Tldr />
+                    <Tldr 
+                    summary={summary} 
+                    author={author} 
+                    subreddit={subreddit} 
+                    pointers={pointers} 
+                    />
 
 
 

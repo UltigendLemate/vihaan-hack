@@ -14,11 +14,11 @@ const Hero = () => {
 
   return (
     <div className="text-center h-fit text-white">
-        <div className="lg:text-[3.75rem] text-[2.5rem] w-[60%] mx-auto font-semibold">
+        <div className="mt-10 lg:text-[3.75rem] text-[2.5rem] w-[60%] leading-none mx-auto font-semibold">
         See what <span className="text-primaryGray">real</span> people are <span className="text-primaryGray">talking</span> about your idea.
         </div>
 
-        <p className="text-[1rem] text-paragraphGray w-[65%] mx-auto my-4">Resonova scans billions of discussions on reddit and other online communities to find the most useful posts and comments for you and creates a list of people talking about your next idea.</p>
+        <p className="py-4 text-[1rem] text-paragraphGray w-[60%] mx-auto my-4">PMS scans billions of discussions on reddit and other online communities to find the most useful posts and comments for you and creates a list of people talking about your next idea.</p>
 
         <div className="lg:w-[60%] w-[90%] p-1 flex md:flex-row flex-col mx-auto border-[2px] rounded-md bg-[#385873AD] border-[#D2D2D25C] text-[#FFFF] border-opacity-30">
         <Input className="bg-transparent border-none text-[1.1rem] text-[#E4E4E4]" placeholder="Describe your Idea / Product "/>
