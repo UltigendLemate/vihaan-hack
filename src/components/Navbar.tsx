@@ -8,11 +8,11 @@ const Navbar = () => {
             Logo
         </div>
 
-        <div className="flex gap-4 items-center">
-            <Button className="text-white" variant="text">
+        <div className="flex gap-4 items-center font-medium">
+            <Button className="text-white text-[1.25rem]" variant="text" size="lg">
                 Login
             </Button>
-            <Button>
+            <Button variant="lightened" className="text-[1.25rem]" size="lg">
                 SignUp
             </Button>
         </div>
