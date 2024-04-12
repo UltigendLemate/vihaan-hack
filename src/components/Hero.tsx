@@ -21,7 +21,7 @@ const Hero = () => {
         <p className="text-[1rem] text-paragraphGray w-[65%] mx-auto my-4">Resonova scans billions of discussions on reddit and other online communities to find the most useful posts and comments for you and creates a list of people talking about your next idea.</p>
 
         <div className="lg:w-[60%] w-[90%] p-1 flex md:flex-row flex-col mx-auto border-[2px] rounded-md bg-[#385873AD] border-[#D2D2D25C] text-[#FFFF] border-opacity-30">
-        <Input className="bg-transparent border-none text-[1.1rem] text-[#E4E4E4] placeholder-white" placeholder="Describe your Idea / Product "/>
+        <Input className="bg-transparent border-none text-[1.1rem] text-[#E4E4E4]" placeholder="Describe your Idea / Product "/>
         <Button className="text-[#213A50] flex"><Star size={16} className="mx-2"/> Generate Result</Button>
         </div>
 
