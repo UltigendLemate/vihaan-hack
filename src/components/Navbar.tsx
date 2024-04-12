@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 import { useUser } from "@clerk/nextjs";
 import {CircleUser} from 'lucide-react'
-
+import { UserButton } from "@clerk/clerk-react";
 
 
 const Navbar = () => {
@@ -22,16 +22,18 @@ const Navbar = () => {
 
             <div className="flex gap-4 items-center font-medium justify-center">
                 {isSignedIn ? (
-                    <div className="flex gap-4 align-middle items-center">
-                        {/* <CircleUser size={36}
-                        /> */}
-                        <img 
-                        className="w-10 aspect-auto rounded-full"
-                        src={user.imageUrl} alt={user.imageUrl} />
-                        {/* <div className="flex flex-col">
-                        <div>{user.primaryEmailAddress.emailAddress}</div>
-                        </div> */}
-                    </div>
+                    // <div className="flex gap-4 align-middle items-center">
+                    //     {/* <CircleUser size={36}
+                    //     /> */}
+                    //     <img 
+                    //     className="w-10 aspect-auto rounded-full"
+                    //     src={user.imageUrl} alt={user.imageUrl} />
+                    //     <div className="flex flex-col">
+                    //     <div className="text-[1.5rem]">{user.firstName}</div>
+                    //     <div>{user.primaryEmailAddress.emailAddress}</div>
+                    //     </div>
+                    // </div>
+                    <UserButton />
                     
                 ) : (
                     // React Fragment to wrap multiple elements
