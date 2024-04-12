@@ -21,7 +21,7 @@ const Hero = () => {
         <p className="text-[1rem] text-paragraphGray w-[65%] mx-auto my-4">Resonova scans billions of discussions on reddit and other online communities to find the most useful posts and comments for you and creates a list of people talking about your next idea.</p>
 
         <div className="lg:w-[60%] w-[90%] p-1 flex md:flex-row flex-col mx-auto border-[2px] rounded-md bg-[#385873AD] border-[#D2D2D25C] text-[#FFFF] border-opacity-30">
-        <Input className="bg-transparent border-none text-[1.1rem]" placeholder="Describe your Idea / Product "/>
+        <Input className="bg-transparent border-none text-[1.1rem] text-[#E4E4E4]" placeholder="Describe your Idea / Product "/>
         <Button className="text-[#213A50] flex"><Star size={16} className="mx-2"/> Generate Result</Button>
         </div>
 
@@ -41,15 +41,15 @@ const Hero = () => {
             <div className="lg:w-[65%] w-[90%] bg-primaryGray min-h-[9rem] rounded-md mx-auto my-12">
             </div>
 
-            <div className="grid md:grid-cols-2 grid-cols-1 w-4/5 mx-auto text-[#E4E4E4] gap-4 py-8">
-                <div className="md:text-[2.5rem] text-[1.9rem]">
+            <div className="grid md:grid-cols-2 grid-cols-1 w-4/5 mx-auto text-[#E4E4E4] gap-4 py-8 text-left">
+                <div className="md:text-[2.5rem] text-[1.9rem] font-semibold">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident sapiente dolorum aliquid laudantium!
                 </div>
-                <div className="flex flex-col align-middle items-center justify-between space-y-8">
-                    <div className="md:text-[1.5rem] text-[0.9rem]">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt incidunt, deleniti culpa expedita et animi. Eaque beatae mollitia incidunt repudiandae molestias aliquam quae odit totam ab reprehenderit quibusdam, quasi numquam.
+                <div className="flex flex-col align-middle items-center justify-around space-y-8">
+                    <div className="md:text-[1.2rem] text-[0.7rem]">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio iusto nobis consequatur tempore, accusantium nesciunt voluptas quidem reiciendis veritatis doloremque architecto odio quisquam sunt, magnam omnis eveniet nemo. Fuga sequi in soluta, explicabo quod libero.
                     </div>
-                    <Button variant="lightened">See How It Works!</Button>
+                    <Button variant="transparentBg">See How It Works!</Button>
                 </div>
             </div>
     </div>
