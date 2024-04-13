@@ -5,7 +5,7 @@ import Tldr from "@/components/Tldr";
 import UserComment, { UserCommentLoading } from "@/components/UserComment";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { getArrayFromApi } from "@/lib/actions";
+import { getArrayFromApi, getTLDR } from "@/lib/actions";
 import { BookText, Plus, Sparkles } from 'lucide-react';
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -21,7 +21,7 @@ const Idea = () => {
     }
     useEffect(() => {
         const fetchData = async (): Promise<void> => {
-            const url = new URL('http://159.89.168:4000/posts');
+            const url = new URL('http://159.89.168.60:4000/posts');
             url.searchParams.append('query', idea);
             url.searchParams.append('limit', '10');
             try {
@@ -39,7 +39,7 @@ const Idea = () => {
                 const summary = await getTLDR(data.documents[0].slice(0, 10))
                 setSummary(JSON.parse(summary))
 
-                console.log(summary)
+                console.log(" summary " + summary)
                 console.log(arr)
             } catch (error) {
                 console.error('Failed to fetch data:', error);
@@ -114,10 +114,10 @@ const Idea = () => {
 
                     </div>
                     <Tldr
-                        summary={apiResponse.summary}
-                        author={apiResponse.author}
-                        subreddit={apiResponse.subreddit}
-                        pointers={apiResponse.pointers}
+                        summary={summary.summary}
+                        author={summary.postedBy}
+                        subreddit={summary.subreddit}
+                        pointers={summary.pointers}
                     />
 
 
