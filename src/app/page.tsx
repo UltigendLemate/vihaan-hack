@@ -5,6 +5,7 @@ import Faqs from "@/components/Faqs";
 import Howwework from "@/components/Howwework";
 import { Separator } from "@/components/ui/separator";
 import Footer from "@/components/Footer";
+import Pricing from './../components/Pricing';
 
 export default function Home() {
   const howwork = [
@@ -25,6 +26,8 @@ export default function Home() {
 
                 </div>
             </div>
+
+            <Pricing/>
 
       <div className=''>
         <h3 className='text-5xl font-medium py-10'>FAQs</h3>
