@@ -14,13 +14,14 @@ const Idea = () => {
     const idea = searchParams.get('q') || '';
     const [data, setData] = useState<any>([]);
     const [commentData, setCommentData] = useState<any>([]);
+    const [summary, setSummary] = useState<any>([])
     const setDocumentData = (data: any) => {
         console.log('Setting data:', data.documents[0].slice(0, 3));
 
     }
     useEffect(() => {
         const fetchData = async (): Promise<void> => {
-            const url = new URL('http://159.89.168.60/posts');
+            const url = new URL('http://159.89.168:4000/posts');
             url.searchParams.append('query', idea);
             url.searchParams.append('limit', '10');
             try {
@@ -34,6 +35,11 @@ const Idea = () => {
                 // setDocumentData(data);
                 const arr = await getArrayFromApi(data.documents[0].slice(0, 3));
                 setCommentData(JSON.parse(arr));
+
+                const summary = await getTLDR(data.documents[0].slice(0, 10))
+                setSummary(JSON.parse(summary))
+
+                console.log(summary)
                 console.log(arr)
             } catch (error) {
                 console.error('Failed to fetch data:', error);
