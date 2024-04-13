@@ -1,11 +1,11 @@
 'use client'
 import Navbar from "@/components/Navbar";
 import SIdebar from "@/components/SIdebar";
-import Tldr from "@/components/Tldr";
+import Tldr, { TldrLoading } from "@/components/Tldr";
 import UserComment, { UserCommentLoading } from "@/components/UserComment";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { getArrayFromApi } from "@/lib/actions";
+import { getArrayFromApi, getTLDR } from "@/lib/actions";
 import { BookText, Plus, Sparkles } from 'lucide-react';
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -53,7 +53,7 @@ const Idea = () => {
                 setSummary(JSON.parse(summary))
 
                 console.log(summary)
-                console.log(arr)
+                // console.log(arr)
             } catch (error) {
                 console.error('Failed to fetch data:', error);
             }
