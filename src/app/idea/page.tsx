@@ -48,12 +48,12 @@ const Idea = () => {
                 // setDocumentData(data);
                 const arr = await tryCatch(maindata,"nahi chala");
                 setCommentData(JSON.parse(arr));
-
+                console.log("doing summary now")
                 const summary = await getTLDR(data.documents[0].slice(0, 10))
                 setSummary(JSON.parse(summary))
 
-                console.log(summary)
-                // console.log(arr)
+                console.log(" summary " + summary)
+                console.log(arr)
             } catch (error) {
                 console.error('Failed to fetch data:', error);
             }
@@ -127,10 +127,10 @@ const Idea = () => {
 
                     </div>
                     <Tldr
-                        summary={apiResponse.summary}
-                        author={apiResponse.author}
-                        subreddit={apiResponse.subreddit}
-                        pointers={apiResponse.pointers}
+                        summary={summary.summary}
+                        author={summary.postedBy}
+                        subreddit={summary.subreddit}
+                        pointers={summary.pointers}
                     />
 
 

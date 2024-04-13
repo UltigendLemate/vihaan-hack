@@ -52,7 +52,7 @@ const {
               { user: "u/bakshi_dhruv", text: "Not a gym in my area, need an online trainer.", subreddit: "r/fitness" }
           ]
       
-      just return the final array as output. nothing else. do not include any variable names here. Just give me a string starting with [ and ending with ]. Ensure this is a valid array. and only one array in the output. GIVE A VALID JSON ONLY.`},
+      just return the final array as output. nothing else. do not include any variable names here. Just give me a string starting with [ and ending with ]. Ensure this is a valid array. and only one array in the output. GIVE A VALID JSON ONLY. give fast`},
     ];
   
     const result = await model.generateContent({
@@ -111,7 +111,7 @@ const {
       
               { pointers: string[], it is a array of strings where for each of the discussion we are adding in depth summary of each disccusion and adding it in array of strings}
           ]
-      
+      DON'T GIVE ME THIS ARRAY FOR EACH AND EVERY INPUT DOCUMENT STRING, instead give me one dummyData object, with one big huge summary, and postedBy and subreddit from the very first string in the document, and then an array of string which is pointers, having one liner summary from each array string,
       just return the final array as output. nothing else. do not include any variable names here. Just give me a string starting with [ and ending with ]. Ensure this is a valid array. and only one array in the output. GIVE A VALID JSON ONLY.`},
     ];
   
