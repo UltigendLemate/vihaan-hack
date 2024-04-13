@@ -46,11 +46,19 @@ const Idea = () => {
                 setData(maindata);
                 console.log('Data received:', maindata);
                 // setDocumentData(data);
+                try{
                 const arr = await tryCatch(maindata,"nahi chala");
                 setCommentData(JSON.parse(arr));
+                } catch (error) {
+                    console.error('Failed to fetch commentData:', error);
+                }
                 console.log("doing summary now")
+                try{
                 const summary = await getTLDR(data.documents[0].slice(0, 10))
                 setSummary(JSON.parse(summary))
+                } catch (error) {
+                    console.error('Failed to fetch summary:', error);
+                }
 
                 console.log(" summary " + Summary)
                 console.log(arr)
@@ -126,12 +134,15 @@ const Idea = () => {
                         <h4 className="text-3xl font-medium">TLDR Summary</h4>
 
                     </div>
+                    {!Summary.summary || !Summary.postedBy || !Summary.subreddit || !Summary.pointers ? <TldrLoading /> : 
+                    
                     <Tldr
-                        summary={Summary.summary}
-                        author={Summary.postedBy}
-                        subreddit={Summary.subreddit}
-                        pointers={Summary.pointers}
+                    summary={Summary.summary}
+                    postedBy={Summary.postedBy}
+                    subreddit={Summary.subreddit}
+                    pointers={Summary.pointers}
                     />
+                }
 
 
 
