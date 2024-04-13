@@ -52,7 +52,7 @@ const {
               { user: "u/bakshi_dhruv", text: "Not a gym in my area, need an online trainer.", subreddit: "r/fitness" }
           ]
       
-      just return the final array as output. nothing else. do not include any variable names here. Just give me a string starting with [ and ending with ]. Ensure this is a valid array. and only one array in the output. GIVE A VALID JSON ONLY.`},
+      just return the final array as output. nothing else. do not include any variable names here. Just give me a string starting with [ and ending with ]. Ensure this is a valid array. and only one array in the output. GIVE A VALID JSON ONLY. give fast`},
     ];
   
     const result = await model.generateContent({
@@ -62,7 +62,7 @@ const {
     });
   
     const response = result.response;
-    console.log(response.text());
+    // console.log(response.text());
     return response.text();
   }
 
@@ -82,19 +82,19 @@ const {
     const safetySettings = [
       {
         category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-        threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+        threshold: HarmBlockThreshold.BLOCK_NONE,
       },
       {
         category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-        threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+        threshold: HarmBlockThreshold.BLOCK_NONE,
       },
       {
         category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-        threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+        threshold: HarmBlockThreshold.BLOCK_NONE,
       },
       {
         category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-        threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+        threshold: HarmBlockThreshold.BLOCK_NONE,
       },
     ];
   

@@ -12,15 +12,10 @@ const Hero = () => {
 
     const [userQuery, setUserQuery] = useState<string>('')
     const [idea, setIdea] = useState<string>('')
-    
-
-
-
-
     const trendingSearch = [
-        "Lorem ipsum dolor sit amet.",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non.",
-        "Lorem ipsum dolor sit amet.",
+        "a platform for a to z academic resources for college students",
+        "Most affordable and premium quality electric gadgets",
+        "Best cuisines in West Delhi",
     ]
 
     return (
@@ -56,9 +51,9 @@ const Hero = () => {
                     ))}
                 </div>
             </div>
+            <video className='max-w-screen-lg mx-auto mt-10' src='/vid.mp4' controls/>
 
-            <div className="lg:w-[65%] w-[90%] bg-primaryGray min-h-[9rem] rounded-md mx-auto my-12">
-            </div>
+            {/* </video> */}
 
             <div className="grid md:grid-cols-2 grid-cols-1 items-center w-4/5 mx-auto text-[#E4E4E4] gap-4 py-8 text-left">
                 <div className="md:text-[2.5rem] text-[1.9rem] font-semibold bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent">
