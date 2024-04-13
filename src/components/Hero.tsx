@@ -12,11 +12,6 @@ const Hero = () => {
 
     const [userQuery, setUserQuery] = useState<string>('')
     const [idea, setIdea] = useState<string>('')
-    
-
-
-
-
     const trendingSearch = [
         "Lorem ipsum dolor sit amet.",
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non.",

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useUser } from "@clerk/nextjs";
 import {CircleUser} from 'lucide-react'
 import { UserButton } from "@clerk/clerk-react";
+import Image from 'next/image';
 
 
 const Navbar = () => {
@@ -16,7 +17,7 @@ const Navbar = () => {
     return (
         <div className="z-10 flex flex-col md:flex-row justify-between px-8 h-[6.5rem] align-middle text-white">
             <div className="flex items-center justify-center">
-                Logo 
+                <Image src={'/logo.png'} width={30} height={30} alt='logo' className='mr-3'/>Ideateit 
             </div>
 
             <div className="flex gap-4 items-center font-medium justify-center">

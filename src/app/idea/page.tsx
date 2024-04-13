@@ -10,6 +10,19 @@ import { BookText, Plus, Sparkles } from 'lucide-react';
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 const Idea = () => {
+    async function tryCatch(data,errorMessage : string) {
+        let attempts = 0;
+        while (attempts < 3) {
+            try {
+                const arr = await getArrayFromApi(data.documents[0].slice(0, 3))
+                return arr; // Exit the function if successful
+            } catch (error) {
+                attempts++;
+                console.error(`Attempt ${attempts} failed: ${error}`);
+            }
+        }
+        console.error(`Failed after 3 attempts: ${errorMessage}`);
+    }
     const searchParams = useSearchParams();
     const idea = searchParams.get('q') || '';
     const [data, setData] = useState<any>([]);
@@ -20,7 +33,7 @@ const Idea = () => {
     }
     useEffect(() => {
         const fetchData = async (): Promise<void> => {
-            const url = new URL('http://159.89.168.60/posts');
+            const url = new URL('http://159.89.168.60:4000/posts');
             url.searchParams.append('query', idea);
             url.searchParams.append('limit', '10');
             try {
@@ -28,11 +41,11 @@ const Idea = () => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                const data: any = await response.json();
-                setData(data);
-                console.log('Data received:', data);
+                const maindata: any = await response.json();
+                setData(maindata);
+                console.log('Data received:', maindata);
                 // setDocumentData(data);
-                const arr = await getArrayFromApi(data.documents[0].slice(0, 3));
+                const arr = await tryCatch(maindata,"nahi chala");
                 setCommentData(JSON.parse(arr));
                 console.log(arr)
             } catch (error) {
@@ -82,14 +95,14 @@ const Idea = () => {
                         <BookText className="text-[#E4E4E4] w-10 h-10" />
                         <h4 className="text-3xl font-medium">Sources</h4>
                     </div>
-                    {commentData[0] && 
-                    <p>A total of 369 users have been talking about your idea in {commentData.length} Subreddits.</p>
+                    {commentData[0] &&
+                        <p>A total of 369 users have been talking about your idea in {commentData.length} Subreddits.</p>
                     }
 
                     <div className="grid grid-cols-3 gap-10">
                         {commentData[0] ? commentData.map((data, index) => (
                             <UserComment key={index} user={data.user} text={data.text} subreddit={data.subreddit} />
-                        )) :  arr.map((_, index) => (
+                        )) : arr.map((_, index) => (
                             <UserCommentLoading key={index} />
                         ))
                         }
