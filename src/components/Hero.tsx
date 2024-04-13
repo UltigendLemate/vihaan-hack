@@ -6,28 +6,16 @@ import TrendingSearch from './TrendingSearch';
 import { Button } from '@/components/ui/button';
 import Howwework from './Howwework';
 import Faqs from './Faqs';
+import Link from 'next/link';
 
 const Hero = () => {
 
     const [userQuery, setUserQuery] = useState<string>('')
+    const [idea, setIdea] = useState<string>('')
     
 
 
-const fetchData = async (): Promise<void> => {
-    const url = new URL('http://159.89.168.60/posts');
-url.searchParams.append('query', userQuery);
-url.searchParams.append('limit', '10');
-    try {
-        const response = await fetch(url.toString());
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data: ApiResponse[] = await response.json();
-        console.log('Data received:', data);
-    } catch (error) {
-        console.error('Failed to fetch data:', error);
-    }
-}
+
 
     const trendingSearch = [
         "Lorem ipsum dolor sit amet.",
@@ -45,11 +33,15 @@ url.searchParams.append('limit', '10');
 
             <div className="lg:w-[60%] w-[90%] p-1 flex md:flex-row flex-col mx-auto border-[2px] rounded-md bg-[#385873AD] border-[#D2D2D25C] text-[#FFFF] border-opacity-30">
                 <Input 
-                onChange={(e) => setUserQuery(e.target.value)}
+                onChange={(e) => setIdea(e.target.value)}
+                value={idea}
                 className="bg-transparent border-none text-[1.1rem] text-[#E4E4E4]" placeholder="Describe your Idea / Product " />
-                <Button 
-                onClick={fetchData}
-                className="text-[#213A50] flex"><Star size={16} className="mx-2" /> Generate Result</Button>
+                <Link href={`/idea?q=${idea}`}>
+                <Button
+                className="text-[#213A50] flex"><Star size={16} className="mx-2" /> 
+                Generate Result
+                </Button>
+                </Link>
             </div>
             <div>
                 <div className="flex gap-4 mx-auto text-[1.5rem] pt-8 pb-4 justify-center">

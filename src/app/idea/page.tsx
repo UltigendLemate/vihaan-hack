@@ -6,6 +6,21 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { BookText, Plus, Sparkles } from 'lucide-react';
 const Idea = () => {
+    const fetchData = async (): Promise<void> => {
+    const url = new URL('http://159.89.168.60/posts');
+url.searchParams.append('query', userQuery);
+url.searchParams.append('limit', '10');
+    try {
+        const response = await fetch(url.toString());
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data: ApiResponse[] = await response.json(); 
+        console.log('Data received:', data);
+    } catch (error) {
+        console.error('Failed to fetch data:', error);
+    }
+}
     const dummyData = [
         { user: "u/unapologeticNerd", text: "I wish there was an app which connects me with personalised.. ", subreddit: "r/ideasfortheidea" },
         { user: "u/Chaitanya", text: "I'm working on an app which will cater to individual exercise asjdf askdf how are you", subreddit: "r/startup_ideas" },
