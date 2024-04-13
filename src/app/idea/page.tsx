@@ -33,11 +33,20 @@ const Idea = () => {
                 setData(data);
                 console.log('Data received:', data);
                 // setDocumentData(data);
-                const arr = await getArrayFromApi(data.documents[0].slice(0, 3));
-                setCommentData(JSON.parse(arr));
-
-                const summary = await getTLDR(data.documents[0].slice(0, 10))
+                try{
+                    const arr = await getArrayFromApi(data.documents[0].slice(0, 3));
+                    setCommentData(JSON.parse(arr));
+                } catch(err) {
+                    console.log(err)
+                }
+                
+                try{
+                    const summary = await getTLDR(data.documents[0].slice(0, 10))
                 setSummary(JSON.parse(summary))
+                } catch(err) {
+                    console.log(err)
+                }
+                
 
                 console.log(" summary " + Summary)
                 console.log(arr)
