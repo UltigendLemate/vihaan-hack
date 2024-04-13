@@ -1,26 +1,52 @@
+'use client'
 import Navbar from "@/components/Navbar";
 import SIdebar from "@/components/SIdebar";
 import Tldr from "@/components/Tldr";
-import UserComment from "@/components/UserComment";
+import UserComment, { UserCommentLoading } from "@/components/UserComment";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { getArrayFromApi } from "@/lib/actions";
 import { BookText, Plus, Sparkles } from 'lucide-react';
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 const Idea = () => {
-    const fetchData = async (): Promise<void> => {
-    const url = new URL('http://159.89.168.60/posts');
-url.searchParams.append('query', userQuery);
-url.searchParams.append('limit', '10');
-    try {
-        const response = await fetch(url.toString());
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data: ApiResponse[] = await response.json(); 
-        console.log('Data received:', data);
-    } catch (error) {
-        console.error('Failed to fetch data:', error);
+    const searchParams = useSearchParams();
+    const idea = searchParams.get('q') || '';
+    const [data, setData] = useState<any>([]);
+    const [commentData, setCommentData] = useState<any>([]);
+    const setDocumentData = (data: any) => {
+        console.log('Setting data:', data.documents[0].slice(0, 3));
+
     }
-}
+    useEffect(() => {
+        const fetchData = async (): Promise<void> => {
+            const url = new URL('http://159.89.168.60/posts');
+            url.searchParams.append('query', idea);
+            url.searchParams.append('limit', '10');
+            try {
+                const response = await fetch(url.toString());
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data: any = await response.json();
+                setData(data);
+                console.log('Data received:', data);
+                // setDocumentData(data);
+                const arr = await getArrayFromApi(data.documents[0].slice(0, 3));
+                setCommentData(JSON.parse(arr));
+                console.log(arr)
+            } catch (error) {
+                console.error('Failed to fetch data:', error);
+            }
+        }
+        fetchData();
+    }, [idea]);
+
+    useEffect(() => {
+        console.log('cOMMENT Data:', commentData);
+
+    }, [commentData])
+
     const dummyData = [
         { user: "u/unapologeticNerd", text: "I wish there was an app which connects me with personalised.. ", subreddit: "r/ideasfortheidea" },
         { user: "u/Chaitanya", text: "I'm working on an app which will cater to individual exercise asjdf askdf how are you", subreddit: "r/startup_ideas" },
@@ -40,7 +66,7 @@ url.searchParams.append('limit', '10');
         pointers: ['', '', '', '', '', '', '', ''],
         summary: ''
     }
-
+    const arr = Array.from({ length: 3 }, (_, i) => i);
 
     return (<main className="">
         <Navbar />
@@ -48,7 +74,7 @@ url.searchParams.append('limit', '10');
         <div className="flex h-[300vh] justify-between items-start my-10 px-10 relative">
             <SIdebar subreddits={subreddits} />
             <div className="w-[80%] px-10 grid gap-5">
-                <h2 className="text-3xl font-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque ipsum cupiditate incidunt voluptatum cumque.</h2>
+                <h2 className="text-3xl font-medium capitalize">{idea}.</h2>
                 <p>Ideateit scanned 651 comments to find you 96 relevant comments from 8 relevant discussions.</p>
                 <Separator className="my-4" />
                 <div className="grid gap-4 my-5">
@@ -56,12 +82,17 @@ url.searchParams.append('limit', '10');
                         <BookText className="text-[#E4E4E4] w-10 h-10" />
                         <h4 className="text-3xl font-medium">Sources</h4>
                     </div>
-                    <p>A total of 369 users have been talking about your idea in 3 Subreddits.</p>
+                    {commentData[0] && 
+                    <p>A total of 369 users have been talking about your idea in {commentData.length} Subreddits.</p>
+                    }
 
                     <div className="grid grid-cols-3 gap-10">
-                        {dummyData.map((data, index) => (
+                        {commentData[0] ? commentData.map((data, index) => (
                             <UserComment key={index} user={data.user} text={data.text} subreddit={data.subreddit} />
-                        ))}
+                        )) :  arr.map((_, index) => (
+                            <UserCommentLoading key={index} />
+                        ))
+                        }
                     </div>
 
                     <div className="flex justify-end">
@@ -76,11 +107,11 @@ url.searchParams.append('limit', '10');
                         <h4 className="text-3xl font-medium">TLDR Summary</h4>
 
                     </div>
-                    <Tldr 
-                    summary={apiResponse.summary} 
-                    author={apiResponse.author} 
-                    subreddit={apiResponse.subreddit} 
-                    pointers={apiResponse.pointers} 
+                    <Tldr
+                        summary={apiResponse.summary}
+                        author={apiResponse.author}
+                        subreddit={apiResponse.subreddit}
+                        pointers={apiResponse.pointers}
                     />
 
 

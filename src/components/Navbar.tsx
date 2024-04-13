@@ -12,7 +12,6 @@ const Navbar = () => {
 
     // Early return while loading or if the user is signed in
     if (!isLoaded) return null;
-    console.log(user)
 
     return (
         <div className="z-10 flex flex-col md:flex-row justify-between px-8 h-[6.5rem] align-middle text-white">
