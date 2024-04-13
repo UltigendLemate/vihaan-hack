@@ -21,7 +21,7 @@ const Idea = () => {
     }
     useEffect(() => {
         const fetchData = async (): Promise<void> => {
-            const url = new URL('http://159.89.168:4000/posts');
+            const url = new URL('http://159.89.168.60:4000/posts');
             url.searchParams.append('query', idea);
             url.searchParams.append('limit', '10');
             try {
