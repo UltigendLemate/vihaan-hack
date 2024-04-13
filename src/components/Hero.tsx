@@ -1,4 +1,5 @@
-import React from 'react'
+"use client"
+import React, {useState} from 'react'
 import { Input } from "@/components/ui/input"
 import { TrendingUp, Search, Star, Keyboard } from 'lucide-react'
 import TrendingSearch from './TrendingSearch';
@@ -7,6 +8,27 @@ import Howwework from './Howwework';
 import Faqs from './Faqs';
 
 const Hero = () => {
+
+    const [userQuery, setUserQuery] = useState<string>('')
+    
+
+
+const fetchData = async (): Promise<void> => {
+    const url = new URL('http://159.89.168.60/posts');
+url.searchParams.append('query', userQuery);
+url.searchParams.append('limit', '10');
+    try {
+        const response = await fetch(url.toString());
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data: ApiResponse[] = await response.json();
+        console.log('Data received:', data);
+    } catch (error) {
+        console.error('Failed to fetch data:', error);
+    }
+}
+
     const trendingSearch = [
         "Lorem ipsum dolor sit amet.",
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non.",
@@ -22,8 +44,12 @@ const Hero = () => {
             <p className="text-[1rem] text-paragraphGray w-[55%] mx-auto my-4">Ideateit scans billions of discussions on reddit and other online communities to find the most useful posts and comments for you and creates a list of people talking about your next idea.</p>
 
             <div className="lg:w-[60%] w-[90%] p-1 flex md:flex-row flex-col mx-auto border-[2px] rounded-md bg-[#385873AD] border-[#D2D2D25C] text-[#FFFF] border-opacity-30">
-                <Input className="bg-transparent border-none text-[1.1rem] text-[#E4E4E4]" placeholder="Describe your Idea / Product " />
-                <Button className="text-[#213A50] flex"><Star size={16} className="mx-2" /> Generate Result</Button>
+                <Input 
+                onChange={(e) => setUserQuery(e.target.value)}
+                className="bg-transparent border-none text-[1.1rem] text-[#E4E4E4]" placeholder="Describe your Idea / Product " />
+                <Button 
+                onClick={fetchData}
+                className="text-[#213A50] flex"><Star size={16} className="mx-2" /> Generate Result</Button>
             </div>
             <div>
                 <div className="flex gap-4 mx-auto text-[1.5rem] pt-8 pb-4 justify-center">
