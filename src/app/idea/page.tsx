@@ -62,10 +62,10 @@ const Idea = () => {
 
                     </div>
                     <Tldr 
-                    summary={summary} 
-                    author={author} 
-                    subreddit={subreddit} 
-                    pointers={pointers} 
+                    summary={apiResponse.summary} 
+                    author={apiResponse.author} 
+                    subreddit={apiResponse.subreddit} 
+                    pointers={apiResponse.pointers} 
                     />
 
 
