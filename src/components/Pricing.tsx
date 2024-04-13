@@ -43,16 +43,19 @@ const Pricing = () => {
             Pricing
         </h1>
 
-        <div className="grid grid-cols-3 text-center gap-12 my-16">
+        <div className="grid grid-cols-3 text-center gap-12 my-16 align-middle items-center">
         {
             pricingPlans.map((item, index) => (
-                <div key={index} className="border-[2px] rounded-md bg-[#385873AD] border-[#D2D2D25C] text-[#FFFF] border-opacity-30 p-8">
+                <div key={index} className={`border-[2px] rounded-md bg-[#385873AD] border-[#D2D2D25C] text-[#FFFF] border-opacity-30 p-8 ${index===1 ? "h-[35rem]" : "h-[32rem]"}`}>
                     <h2 className="text-[1.5rem]">{item.title}</h2>
                     <h3 className="text-[1.5rem] my-6"><span className="text-[2.5rem]">$ {item.price}/</span>month</h3>
+                    <div className="bg-[#E4E4E4]/80 p-4 rounded-md text-[#16212C] ">
+                      Get Started
+                    </div>
                     <ul className="">
                         {item.features.map((feature, index) => (
                             <li className="my-6 flex align-middle items-center justify-between" key={index}>
-                                {feature.isHave ? <Check/> : <X />} {feature.desc}
+                                {feature.isHave ? <Check/> : <X />} <span className="text-center w-full">{feature.desc}</span>
                             </li>
                         ))}
                     </ul>
