@@ -14,7 +14,7 @@ const Idea = () => {
     const idea = searchParams.get('q') || '';
     const [data, setData] = useState<any>([]);
     const [commentData, setCommentData] = useState<any>([]);
-    const [summary, setSummary] = useState<any>([])
+    const [Summary, setSummary] = useState<any>([])
     const setDocumentData = (data: any) => {
         console.log('Setting data:', data.documents[0].slice(0, 3));
 
@@ -39,7 +39,7 @@ const Idea = () => {
                 const summary = await getTLDR(data.documents[0].slice(0, 10))
                 setSummary(JSON.parse(summary))
 
-                console.log(" summary " + summary)
+                console.log(" summary " + Summary)
                 console.log(arr)
             } catch (error) {
                 console.error('Failed to fetch data:', error);
@@ -114,10 +114,10 @@ const Idea = () => {
 
                     </div>
                     <Tldr
-                        summary={summary.summary}
-                        author={summary.postedBy}
-                        subreddit={summary.subreddit}
-                        pointers={summary.pointers}
+                        summary={Summary.summary}
+                        author={Summary.postedBy}
+                        subreddit={Summary.subreddit}
+                        pointers={Summary.pointers}
                     />
 
 
